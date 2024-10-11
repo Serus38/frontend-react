@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getDirectores } from '../../services/directorService';
 import { getProductoras } from '../../services/productoraService';
-// import { getTipos } from '../../services/tipoService';
+import { getTipos } from '../../services/tipoService';
 import { getGeneros } from '../../services/generoService';
-import { CrearMedia } from '../../services/mediaService';
+import { crearMedia } from '../../services/mediaService';
 import Swal from 'sweetalert2';
 
 
@@ -11,10 +11,10 @@ import Swal from 'sweetalert2';
 
      const [directores, setDirectores ] = useState([]);
      const [productoras, setProductoras ] = useState([]);
-    //  const [tipos, setTipos ] = useState([]);
+     const [tipos, setTipos ] = useState([]);
      const [generos, setGeneros ] = useState([]);
      const [ valoresForm, setValoresForm ] = useState([]);
-     const { serial = '', titulo = '', descripcion = '', foto = '', añoEstreno = '', director, productora, genero, /*tipo*/ } = valoresForm
+     const { serial = '', titulo = '', descripcion = '', foto = '', añoEstreno = '', director, productora, genero, tipo } = valoresForm
     
  const listarDirectores = async () => {
      try{
@@ -45,19 +45,19 @@ useEffect(() => {
 }, []);
 
 
-// const listarTipos = async () => {
-//     try{
-//         const { data } = await getTipos();
-//         setTipos(data);
+const listarTipos = async () => {
+    try{
+        const { data } = await getTipos();
+        setTipos(data);
 
-//     } catch(error) {
-//         console.log(error);
-//     }
-// }
+    } catch(error) {
+        console.log(error);
+    }
+}
 
-// useEffect(() => {
-//     listarTipos();
-// }, []);
+useEffect(() => {
+    listarTipos();
+}, []);
 
 
 const listarProductoras = async () => {
@@ -91,9 +91,9 @@ useEffect(() => {
               genero: {
                   _id: genero
              },
-            //   tipo:{
-            //      _id: tipo
-            // },
+              tipo:{
+                 _id: tipo
+            },
              productora: {
                  _id: productora
              }
@@ -105,7 +105,7 @@ useEffect(() => {
                  text: 'Cargando...'
              });
              Swal.showLoading();
-             const { data } = await CrearMedia(media);
+             const { data } = await crearMedia(media);
              handleOpenModal();
              listarMedias();
              Swal.close();
@@ -172,7 +172,7 @@ useEffect(() => {
 
                         <div className='col'>
                             <div className="mb-3">
-                                <label className="form-label">Año estreno</label>
+                                <label className="form-label">Estreno</label>
                                 <input type="date" name='añoEstreno' 
                                 value={añoEstreno}
                                 onChange={e => handleOnChange(e)}

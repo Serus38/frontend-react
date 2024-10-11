@@ -8,7 +8,7 @@ const getMedias = () => {
     });
 }
 
-const CrearMedia = (data) => {
+const crearMedia = (data) => {
     return axiosInstance.post('media', data, {
         header: {
             'Content-Type': 'application/json'
@@ -17,7 +17,7 @@ const CrearMedia = (data) => {
 
 }
 
-const ActualizarMedia = (mediaId,data) => {
+const actualizarMedia = (mediaId,data) => {
     return axiosInstance.put(`media/${mediaId}`, data, {
         header: {
             'Content-Type': 'application/json'
@@ -34,5 +34,5 @@ const getMediaPorId = (mediaId) => {
     });
 }
 export {
-    getMedias, CrearMedia, ActualizarMedia, getMediaPorId
+    getMedias, crearMedia, actualizarMedia, getMediaPorId
 }

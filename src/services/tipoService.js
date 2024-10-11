@@ -8,7 +8,7 @@ const getTipos = () => {
     });
 }
 
-const crearTipos = (data) => {
+const crearTipo = (data) => {
     return axiosInstance.post('tipo', data, {
         header: {
             'Content-Type': 'application/json'
@@ -25,5 +25,5 @@ const actualizarTipo = (data, tipoId) => {
 }
 
 export {
-    getTipos, crearTipos, actualizarTipo
+    getTipos, crearTipo, actualizarTipo
 }
