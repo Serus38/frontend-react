@@ -112,7 +112,7 @@ export const MediaUpdate = () => {
                 director: media.director,
                 productora: media.productora,
                 genero: media.genero,
-                tipo: media.tipoEquipo,
+                tipo: media.tipo,
             });
         }
     }, [ media ])
@@ -134,10 +134,10 @@ export const MediaUpdate = () => {
             marca: {
                 _id: productora
             },
-            tipoEquipo:{
+            tipo:{
                 _id: tipo
             },
-            estadoEquipo: {
+            genero: {
                 _id: genero
             }
         }
@@ -175,7 +175,7 @@ export const MediaUpdate = () => {
         <div className='card-body'>
             <div className='row'>
                 <div className='col-md-4'>
-                    <img src={media.foto} />
+                    <img src={media?.foto} />
                 </div>
                 <div className='col-md-8'>
                 <form onSubmit={(e) => handleOnSubmit(e) }>
@@ -276,7 +276,7 @@ export const MediaUpdate = () => {
                         </div>
                         <div className='col'>
                             <div className="mb-3">
-                                <label  className="form-label">Tipo Equipo</label>
+                                <label  className="form-label">Tipo</label>
                                 <select className='form-select'
                                 required
                                 name= 'tipo'

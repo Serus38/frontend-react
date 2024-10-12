@@ -1,7 +1,7 @@
 import { axiosInstance } from "../helper/axios-config";
 
 const getTipos = () => {
-    return axiosInstance.get('tipos', {
+    return axiosInstance.get('tipo', {
         header: {
             'Content-Type': 'application/json'
         }

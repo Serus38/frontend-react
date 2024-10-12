@@ -7,7 +7,7 @@ export const TipoView = () => {
 
   const [valoresForm, setValoresForm] = useState({});
   const [tipos, setTipos] = useState({});
-  const { nombre = '', estado = ''} = valoresForm;
+  const { nombre = '', descripcion = ''} = valoresForm;
   const [tipoSeleccionado, setTiposSeleccionado] = useState(null);
 
   const listarTipos = async () => {
@@ -52,7 +52,7 @@ export const TipoView = () => {
         await crearTipo(valoresForm);
       }
 
-      setValoresForm({nombre: '', estado: ''});
+      setValoresForm({nombre: '', descripcion: ''});
       listarTipos();
       Swal.close();
     }catch(error){
@@ -63,7 +63,7 @@ export const TipoView = () => {
 
   const handleActualizarTipo = async (e,tipo) =>{
     e.preventDefault();
-    setValoresForm({nombre: tipo.nombre, estado: tipo.estado});
+    setValoresForm({nombre: tipo.nombre, estado: tipo.descripcion});
     setTiposSeleccionado(tipo._id);
   };
 
@@ -78,17 +78,16 @@ export const TipoView = () => {
               onChange={(e) => handleOnChange(e)} />
           </div>
         </div>
-        <div className="col-lg-4">
-            <div className="mb-3">
-              <label className="form-label">Estado</label>
-              <select required name='estado' value={estado} className="form-select" 
-              onChange={(e) => handleOnChange(e)} >
-                <option selected>--SELECCIONE--</option>
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
-              </select>
-            </div>
+
+        <div className="col-lg-8">
+          <div className="mb-3">
+            <label className="form-label">Descripción</label>
+            <input required name='descripcion' value={descripcion} type="text" className="form-control"
+              onChange={(e) => handleOnChange(e)} />
           </div>
+        </div>
+
+
       </div>
       <button className="btn btn-primary mb-3">Guardar</button>
     </form>
@@ -111,7 +110,7 @@ export const TipoView = () => {
             return <tr>
               <th scope='row'> {index + 1}</th>
               <td>{tipo.nombre}</td>
-              <td>{tipo.estado}</td>
+              <td>{tipo.descripcion}</td>
               <td>{moment(tipo.fechaCreacion).format('DD-MM-YYYY HH:mm')}</td>
               <td>{moment(tipo.fechaActualizacion).format('DD-MM-YYYY HH:mm')}</td>
               <td><button className='btn btn-success btn-sm me-2' onClick={(e) => handleActualizarTipo(e, tipo)}>Actualizar</button>

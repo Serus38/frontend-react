@@ -8,7 +8,7 @@ export const ProductoraView = () => {
   const [valoresForm, setValoresForm] = useState({});
   const [productoras, setProductoras] = useState({});
   const { nombre = '', estado = ''} = valoresForm;
-  const [productoraSeleccionado, setProductorasSeleccionado] = useState(null);
+  const [productoraSeleccionado, setProductoraSeleccionado] = useState(null);
 
   const listarProductoras = async () => {
     try{
@@ -46,7 +46,7 @@ export const ProductoraView = () => {
 
       if (productoraSeleccionado){
         await actualizarProductora(valoresForm, productoraSeleccionado);
-        setProductorasSeleccionado(null);
+        setProductoraSeleccionado(null);
       }
       else{
         await crearProductora(valoresForm);
@@ -64,7 +64,7 @@ export const ProductoraView = () => {
   const handleActualizarProductora = async (e,productora) =>{
     e.preventDefault();
     setValoresForm({nombre: productora.nombre, estado: productora.estado});
-    setProductorasSeleccionado(productora._id);
+    setProductoraSeleccionado(productora._id);
   };
 
   return(
@@ -81,8 +81,7 @@ export const ProductoraView = () => {
         <div className="col-lg-4">
             <div className="mb-3">
               <label className="form-label">Estado</label>
-              <select required name='estado' value={estado} className="form-select" 
-              onChange={(e) => handleOnChange(e)} >
+              <select required name='estado' value={estado} className="form-select" onChange={(e) => handleOnChange(e)} >
                 <option selected>--SELECCIONE--</option>
                 <option value="Activo">Activo</option>
                 <option value="Inactivo">Inactivo</option>

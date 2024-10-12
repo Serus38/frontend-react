@@ -228,7 +228,7 @@ useEffect(() => {
                         <div className='col'>
                             <div className="mb-3">
                                 <label className="form-label">Foto</label>
-                                <input type="text" name='foto' 
+                                <input type="foto" name='foto' 
                                 value={foto}
                                 onChange={e => handleOnChange(e)}
                                 required 
@@ -257,7 +257,7 @@ useEffect(() => {
 
                     </div>
 
-                    {/* <div className='row'>
+                    <div className='row'>
                         <div className='col'>
                             <div className='mb-3'>
                             <label className="form-label">Tipo</label>
@@ -279,7 +279,7 @@ useEffect(() => {
 
                         </div>
 
-                    </div> */}
+                    </div>
                              
 
 
